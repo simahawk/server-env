@@ -13,10 +13,9 @@ class TestEnv(common.TransactionCase):
         super(TestEnv, self).setUp()
         self.ICP = self.env['ir.config_parameter']
 
-    @classmethod
-    def _load_xml(cls, module, filepath):
+    def _load_xml(self, module, filepath):
         convert_file(
-            cls.cr, module,
+            self.env.cr, module,
             get_resource_path(module, filepath),
             {}, mode='init', noupdate=False, kind='test')
 
